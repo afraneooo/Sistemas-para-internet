@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Principal - Projetos Nível 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eef0ff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            width: 100%;
+        }
+        main {
+            width: 90%;
+            max-width: 1000px;
+        }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 20px;
+            padding: 0;
+            list-style: none;
+        }
+        .menu-grid li {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+        .menu-grid li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        }
+        .menu-grid a {
+            display: block;
+            padding: 25px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .menu-grid a:hover {
+            color: #007bff;
+        }
+        /* Responsividade */
+        @media (max-width: 600px) {
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        footer {
+            margin-top: auto; 
+            padding: 20px;
+            color: #777;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Projetos Simples: Nível 1️⃣</h1>
+        <p>Selecione o projeto abaixo para acessar:</p>
+    </header>
+    <main>
+        <ul class="menu-grid">
+            <li><a href="1_cor_changer.html">1. Trocador de Cores da Página</a></li>
+            <li><a href="2_contador.html">2. Contador</a></li>
+            <li><a href="3_relogio.html">3. Relógio Digital</a></li>
+            <li><a href="4_todo_list.html">4. Lista de Tarefas (To-do List)</a></li>
+            <li><a href="5_calculadora.html">5. Calculadora Básica</a></li>
+        </ul>
+    </main>
+    <footer>
+        <p>Desenvolvido por Afrânio Nogueira</p>
+    </footer>
+</body>
+</html>

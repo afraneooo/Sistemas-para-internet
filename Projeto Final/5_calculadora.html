@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>5. Calculadora Básica</title>
+    <style>
+        .calculadora {
+            width: 300px;
+            margin: 50px auto;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            font-family: Arial, sans-serif;
+        }
+        #display {
+            width: 95%;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 2em;
+            text-align: right;
+            border: 1px solid #aaa;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+        .botoes {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        .botoes button {
+            padding: 15px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f0f0f0;
+            transition: background-color 0.1s;
+        }
+        .botoes button:hover {
+            background-color: #e0e0e0;
+        }
+        .operador {
+            background-color: #ff9500 !important;
+            color: white;
+        }
+        .operador:hover {
+            background-color: #cc7800 !important;
+        }
+        .igual {
+            grid-column: span 2;
+            background-color: #4cd964 !important;
+            color: white;
+        }
+        .igual:hover {
+            background-color: #3aa84f !important;
+        }
+        footer {
+            display: flex;            
+            justify-content: center;  
+            align-items: center;      
+            padding: 30px;           
+            margin-top: 50px;
+        }
+        .botao-fofo {
+            background-color: #4b1fc2; 
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none; 
+            border-radius: 50px; 
+            font-family: sans-serif;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.2s ease;
+            display: inline-block;
+        }
+
+        .botao-fofo:hover {
+            background-color: #3c1da2; 
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+        }
+
+        .botao-fofo:active {
+            transform: translateY(1px); 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="calculadora">
+        <input type="text" id="display" readonly>
+        <div class="botoes">
+            <button onclick="clearDisplay()">C</button>
+            <button onclick="appendOperator('/')" class="operador">/</button>
+            <button onclick="appendOperator('*')" class="operador">x</button>
+            <button onclick="backspace()">&#9003;</button>
+            
+            <button onclick="appendNumber('7')">7</button>
+            <button onclick="appendNumber('8')">8</button>
+            <button onclick="appendNumber('9')">9</button>
+            <button onclick="appendOperator('-')" class="operador">-</button>
+            
+            <button onclick="appendNumber('4')">4</button>
+            <button onclick="appendNumber('5')">5</button>
+            <button onclick="appendNumber('6')">6</button>
+            <button onclick="appendOperator('+')" class="operador">+</button>
+            
+            <button onclick="appendNumber('1')">1</button>
+            <button onclick="appendNumber('2')">2</button>
+            <button onclick="appendNumber('3')">3</button>
+            <button onclick="appendNumber('0')">0</button>
+            
+            <button onclick="appendNumber('.')">.</button>
+            <button onclick="calculate()" class="igual">=</button>
+        </div>
+    </div>
+
+    <script>
+        const display = document.getElementById('display');
+        let currentInput = '';
+
+        function appendNumber(number) {
+            currentInput += number;
+            display.value = currentInput;
+        }
+
+        function appendOperator(operator) {
+            if (currentInput.length > 0 && !isNaN(currentInput[currentInput.length - 1])) {
+                currentInput += operator;
+                display.value = currentInput;
+            }
+        }
+
+        function calculate() {
+            try {
+                currentInput = eval(currentInput).toString();
+                display.value = currentInput;
+            } catch (error) {
+                display.value = 'Erro';
+                currentInput = '';
+            }
+        }
+
+        function clearDisplay() {
+            currentInput = '';
+            display.value = '';
+        }
+
+        function backspace() {
+            currentInput = currentInput.slice(0, -1);
+            display.value = currentInput;
+        }
+    </script>
+    <footer>
+        <a href="index.html" class="botao-fofo">Voltar ao Menu</a>
+    </footer>
+</nav>
+
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>4. Lista de Tarefas (To-do List)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        input[type="text"] {
+            width: 94%;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        button {
+            padding: 10px;
+            width: 25%;
+            margin-left: 5px;
+            background-color: #2f58ea;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+        li {
+            padding: 10px;
+            margin-bottom: 8px;
+            background: #f4f4f4;
+            display: flex;
+            align-items: center; 
+            border-radius: 4px;
+        }
+        .concluida {
+            text-decoration: line-through;
+            color: #888;
+        }
+        .texto-tarefa {
+            flex-grow: 1;
+            margin-left: 10px;
+        }
+        .remover {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 3px;
+            width: auto; 
+            margin-left: 10px;
+        }
+        footer {
+            display: flex;            
+            justify-content: center;  
+            align-items: center;      
+            padding: 30px;           
+            margin-top: 50px;
+        }
+        .botao-fofo {
+            background-color: #4b1fc2;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-family: sans-serif;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.2s ease;
+            display: inline-block;
+        }
+        .botao-fofo:hover {
+            background-color: #3c1da2;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+        }
+        .botao-fofo:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Minha Lista de Tarefas</h1>
+    <input type="text" id="novaTarefa" placeholder="Digite uma nova tarefa"><br><br>
+    <button onclick="adicionarTarefa()">Adicionar</button>
+    
+    <ul id="listaDeTarefas">
+    </ul>
+
+    <script>
+        function adicionarTarefa() {
+            const input = document.getElementById('novaTarefa');
+            const textoTarefa = input.value.trim();
+
+            if (textoTarefa === "") {
+                alert("Por favor, digite uma tarefa.");
+                return;
+            }
+
+            const lista = document.getElementById('listaDeTarefas');
+            
+            const novoItem = document.createElement('li');
+
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+    
+            const spanTexto = document.createElement('span');
+            spanTexto.textContent = textoTarefa;
+            spanTexto.className = 'texto-tarefa';
+
+            checkbox.onclick = function() {
+                if (checkbox.checked) {
+                    spanTexto.classList.add('concluida');
+                } else {
+                    spanTexto.classList.remove('concluida');
+                }
+            };
+
+            const botaoRemover = document.createElement('button');
+            botaoRemover.textContent = 'X';
+            botaoRemover.className = 'remover';
+            
+            botaoRemover.onclick = function() {
+                lista.removeChild(novoItem);
+            };
+
+            novoItem.appendChild(checkbox);
+            novoItem.appendChild(spanTexto);
+            novoItem.appendChild(botaoRemover);
+            
+            lista.appendChild(novoItem);
+            input.value = '';
+        }
+    </script>
+    <footer>
+        <a href="index.html" class="botao-fofo">Voltar ao Menu</a>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>1. Trocador de Cores</title>
+    <style>
+        body {
+            transition: background-color 0.5s; /* Transição suave para a cor */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        footer {
+            display: flex;            
+            justify-content: center;  
+            align-items: center;      
+            padding: 30px;           
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #3498db;
+            color: white;
+        }
+        .botao-fofo {
+            background-color: #4b1fc2; 
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none; 
+            border-radius: 50px; 
+            font-family: sans-serif;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.2s ease;
+            display: inline-block;
+        }
+
+        .botao-fofo:hover {
+            background-color: #3c1da2; 
+            transform: translateY(-2px); 
+            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+        }
+
+        .botao-fofo:active {
+            transform: translateY(1px); 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <button onclick="mudarCor()">Trocar Cor de Fundo</button>
+
+    <script>
+        function mudarCor() {
+            // Gera um número hexadecimal aleatório para a cor (ex: #a3c1f9)
+            const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+            document.body.style.backgroundColor = randomColor;
+        }
+    </script>
+    <footer>
+        <a href="index.html" class="botao-fofo">Voltar ao Menu</a>
+    </footer>
+</body>
+</html>
